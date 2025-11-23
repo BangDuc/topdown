@@ -3,7 +3,7 @@ using UnityEngine;
 public class Detect_Player_Service : MonoBehaviour, IServiceDetectPlayer
 {
     [SerializeField]
-    CircleCollider2D Radius;
+    Collider2D Radius;
     [SerializeField]
     GameObject m_Player;
     public GameObject GetPlayer()
@@ -22,7 +22,7 @@ public class Detect_Player_Service : MonoBehaviour, IServiceDetectPlayer
         if (collision.tag == "Player")
         {
             m_Player = collision.gameObject;
-            Radius.radius = 10;
+            transform.localScale = new Vector3(2, 2, 2);
         }
         
     }
@@ -31,7 +31,7 @@ public class Detect_Player_Service : MonoBehaviour, IServiceDetectPlayer
         if (collision.tag == "Player")
         {
             m_Player = null;
-            Radius.radius = 5;
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 

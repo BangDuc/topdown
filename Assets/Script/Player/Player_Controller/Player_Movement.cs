@@ -6,17 +6,16 @@ public class Player_Movement : MonoBehaviour
 {
     [SerializeField] Rigidbody2D Rb;
 
-    [SerializeField] float speed = 5f;
+    [SerializeField] float speed = 10f;
 
     [SerializeField] public Vector2 Input_Dir;
 
     [SerializeField] public float DashForce;
-    [SerializeField] float dashingTime = 0.2f;
+    [SerializeField] float dashingTime = 0.3f;
     [SerializeField] float dashCooldown = 1f;
 
     public bool IsDashing;
     public bool canDash;
-    public bool triggerDash;
 
     IServiceStopMoving serviceStopMoving;
     IInputVectorService inputMove;
@@ -25,8 +24,9 @@ public class Player_Movement : MonoBehaviour
     {
         inputMove = GetComponent<IInputVectorService>();
         inputMove.Subcrible(UpdateInput_Dir);
+        inputMove.Subcrible(ApplyMovement);
         inputDash = GetComponent<IInputService>();
-        inputDash.Subcrible(UpdateDash);
+        inputDash.Subcrible(DashMovement);
         serviceStopMoving =GetComponent<IServiceStopMoving>();
         serviceStopMoving.SetRigidbody(Rb);
     }
@@ -34,36 +34,30 @@ public class Player_Movement : MonoBehaviour
     {
         Input_Dir = dir;
     }
-    public void UpdateDash()
+    public void ApplyMovement(Vector2 dir)
     {
-        triggerDash = true;
-    }
-    public void ApplyMovement()
-    {
-        Vector2 velocity = Input_Dir * speed;
+        if (IsDashing) return;
+
+        Vector2 velocity = dir * speed;
         Rb.linearVelocity = velocity;
     }
     public void DashMovement()
     {
-        if (triggerDash)
+        if (canDash)
         {
-            if (canDash)
-            {
-                StartCoroutine(Dash());
-            }
+            StartCoroutine(Dash());
         }
     }
     private IEnumerator Dash()
     {
         canDash = false;
         IsDashing = true;
-        Vector2 dashDirection = Input_Dir == Vector2.zero ? new Vector2(transform.localScale.x, 0) : Input_Dir;
+        Vector2 dashDirection = Input_Dir;
         Rb.linearVelocity = dashDirection * DashForce;
 
         yield return new WaitForSeconds(dashingTime);
 
         IsDashing = false;
-        triggerDash = false;
         serviceStopMoving.StopMoving();
 
         yield return new WaitForSeconds(dashCooldown);
