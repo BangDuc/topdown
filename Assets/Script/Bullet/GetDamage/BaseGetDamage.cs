@@ -10,7 +10,7 @@ public class BaseGetDamage : MonoBehaviour, ITargetable
     }
     private void Start()
     {
-        health =GetComponent<Health_Base>();
+        health = GetComponent<Health_Base>();
     }
 }
 public interface ITargetable

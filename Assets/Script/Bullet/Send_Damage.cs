@@ -17,7 +17,6 @@ public class BaseSendDamage : MonoBehaviour
         if(collision.gameObject.TryGetComponent<ITargetable>(out var target))
         {
             target.GetDamage(Damage);
-            Debug.Log("Hit"+collision.gameObject.name);
             gameObject.SetActive(false);
         }
     }

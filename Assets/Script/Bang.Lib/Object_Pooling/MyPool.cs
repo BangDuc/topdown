@@ -22,8 +22,14 @@ namespace Bang.Lib.ObjectPooling
                 tmp.SetActive(true);
                 return tmp;
             }
-            tmp = GameObject.Instantiate(baseObject);
-            returnPool = tmp.AddComponent<ReturnToMyPool>();
+            tmp = GameObject.Instantiate(baseObject,Pool_Manager.Instance.transform);
+            //returnPool = tmp.AddComponent<ReturnToMyPool>();
+            returnPool = tmp.GetComponent<ReturnToMyPool>();
+            
+            if (returnPool == null)
+            {
+                returnPool = tmp.AddComponent<ReturnToMyPool>();
+            }
             returnPool.pool = this;
             return tmp;
         }

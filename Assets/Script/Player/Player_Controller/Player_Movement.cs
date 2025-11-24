@@ -54,7 +54,7 @@ public class Player_Movement : MonoBehaviour
         IsDashing = true;
         Vector2 dashDirection = Input_Dir;
         Rb.linearVelocity = dashDirection * DashForce;
-
+        
         yield return new WaitForSeconds(dashingTime);
 
         IsDashing = false;

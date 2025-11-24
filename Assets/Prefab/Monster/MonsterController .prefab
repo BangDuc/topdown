@@ -296,7 +296,7 @@ Transform:
   m_GameObject: {fileID: 6186920494104297528}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23, y: -3.36, z: 0}
+  m_LocalPosition: {x: 7.22, y: -4.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -455,5 +455,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 013761773bc35c7499a3250c14db337e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 100
-  currentHP: 100
+  MaxHP: 1000
+  currentHP: 1000
