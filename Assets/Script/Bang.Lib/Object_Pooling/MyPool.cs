@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Bang.Lib.ObjectPooling
 {
-    public class MyPool : MonoBehaviour
+    public class MyPool 
     {
         private Stack<GameObject> mypool = new Stack<GameObject>();
         private GameObject baseObject;

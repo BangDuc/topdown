@@ -32,13 +32,13 @@ public class Player_Movement : MonoBehaviour
     }
     public void UpdateInput_Dir(Vector2 dir)
     {
-        Input_Dir = dir;
+        Input_Dir = dir.normalized;
     }
     public void ApplyMovement(Vector2 dir)
     {
         if (IsDashing) return;
 
-        Vector2 velocity = dir * speed;
+        Vector2 velocity = Vector2.ClampMagnitude(dir, 1f) * speed;
         Rb.linearVelocity = velocity;
     }
     public void DashMovement()

@@ -7,6 +7,8 @@ public class GetNearestGameObjectService : MonoBehaviour
     [SerializeField] GameObject nearest;
     [SerializeField] IServiceDetectGameObject detectGameObject;
 
+    public GameObject Nearest { get => nearest; set => nearest = value; }
+
     public GameObject GetNearest(List<GameObject> list)
     {
         float minSqrDistance = Mathf.Infinity;
@@ -29,7 +31,7 @@ public class GetNearestGameObjectService : MonoBehaviour
         detectGameObject= GetComponent<IServiceDetectGameObject>();
         self=Player_Manager.Instance.Player;
     }
-    private void Update()
+    public void Update()
     {
         GetNearest(detectGameObject.Get());
     }
