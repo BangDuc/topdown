@@ -20,6 +20,8 @@ public class Player_Movement : MonoBehaviour
     IServiceStopMoving serviceStopMoving;
     IInputVectorService inputMove;
     IInputService inputDash;
+
+    [SerializeField]Animation_Controller_Base animation_controller;
     private void Start()
     {
         inputMove = GetComponent<IInputVectorService>();
@@ -33,13 +35,20 @@ public class Player_Movement : MonoBehaviour
     public void UpdateInput_Dir(Vector2 dir)
     {
         Input_Dir = dir.normalized;
+        
     }
+    
     public void ApplyMovement(Vector2 dir)
     {
         if (IsDashing) return;
-
+        if (Input_Dir.x != 0)
+        {
+            
+            Player_Manager.Instance.Player.transform.localScale = new Vector3(Mathf.Sign(Input_Dir.x), 1, 1);
+        }
         Vector2 velocity = Vector2.ClampMagnitude(dir, 1f) * speed;
         Rb.linearVelocity = velocity;
+        
     }
     public void DashMovement()
     {
@@ -54,7 +63,7 @@ public class Player_Movement : MonoBehaviour
         IsDashing = true;
         Vector2 dashDirection = Input_Dir;
         Rb.linearVelocity = dashDirection * DashForce;
-        
+        animation_controller.ChangeAnimationState(animation_controller.animDash);
         yield return new WaitForSeconds(dashingTime);
 
         IsDashing = false;
@@ -64,4 +73,25 @@ public class Player_Movement : MonoBehaviour
         canDash = true;
     }
 
+    private void HandleAnimation()
+    {
+
+        if (IsDashing)
+        {
+            return;
+        }
+        if (Input_Dir.sqrMagnitude > 0.01f) 
+        {
+            animation_controller.ChangeAnimationState(animation_controller.animWalk);
+            return;
+        }
+        
+      
+        animation_controller.ChangeAnimationState(animation_controller.animIdle);
+       
+    }
+    private void Update()
+    {
+        HandleAnimation();
+    }
 }

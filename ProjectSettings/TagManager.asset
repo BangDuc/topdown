@@ -39,6 +39,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 3744050197
+    locked: 0
+  - name: MapDetails
+    uniqueID: 1486462105
+    locked: 0
+  - name: NPC
+    uniqueID: 1783810679
+    locked: 0
+  - name: Player
+    uniqueID: 1896792539
+    locked: 0
+  - name: VFX
+    uniqueID: 611214121
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

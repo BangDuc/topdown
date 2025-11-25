@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseSendDamage2 : MonoBehaviour
+public class BaseSendDamage2 : MonoBehaviour,ISendDamage
 {
     [SerializeField] float Damage;
     [SerializeField] List<string> listTag = new List<string>();
@@ -21,3 +21,8 @@ public class BaseSendDamage2 : MonoBehaviour
 
 }
 
+public interface ISendDamage
+{
+    void setDamage(float damage);
+    
+}

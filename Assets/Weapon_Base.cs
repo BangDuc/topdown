@@ -1,7 +1,7 @@
 ﻿using Bang.Lib.ObjectPooling;
 using UnityEngine;
 
-public class Weapon_Base : MonoBehaviour, IWeapon
+public class Weapon_Base_Shoot : MonoBehaviour, IWeapon
 {
     [SerializeField] GameObject Prefab_Bullet;
     [SerializeField] GameObject SpawnPoint;
@@ -12,7 +12,7 @@ public class Weapon_Base : MonoBehaviour, IWeapon
         
         var bullet = Pool_Manager.Instance.GetFromPool(Prefab_Bullet.gameObject);
 
-        var damagesend = bullet.GetComponent<BaseSendDamage>();
+        var damagesend = bullet.GetComponent<ISendDamage>();
 
         var autoDisable = bullet.GetComponent<IAutoDisable>();
 

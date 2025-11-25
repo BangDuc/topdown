@@ -3,7 +3,7 @@ using Bang.Lib.ObjectPooling;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseSendDamage : MonoBehaviour
+public class BaseSendDamage : MonoBehaviour, ISendDamage
 {
     [SerializeField] float Damage;
     [SerializeField]List<string> listTag = new List<string>();
