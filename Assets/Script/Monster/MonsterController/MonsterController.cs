@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MonsterController : MonoBehaviour
+public class MonsterChase : MonoBehaviour
 {
     [SerializeField]
     IServiceDetectPlayer serviceDetectPlayer;
@@ -16,12 +16,7 @@ public class MonsterController : MonoBehaviour
         serviceStopMoving = GetComponentInChildren<IServiceStopMoving>();
         serviceStopMoving.SetRigidbody(rb);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Chase_Player();
-    }
+   
     public void Chase_Player()
     {
         if (serviceDetectPlayer == null) return;
@@ -35,4 +30,9 @@ public class MonsterController : MonoBehaviour
         rb.linearVelocity=direct*speed;
         
     }
+    public void SetRigidbody(Rigidbody2D rb)
+    {
+        this.rb = rb;
+    }
+
 }
