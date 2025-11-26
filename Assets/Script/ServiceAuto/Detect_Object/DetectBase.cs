@@ -7,9 +7,15 @@ public class DetectBase : MonoBehaviour, IServiceDetectGameObject
     [SerializeField] Collider2D DetectZone;
     [SerializeField] List<GameObject> DetectZoneList =new List<GameObject>();
     [SerializeField] List<string> Tags;
+    [SerializeField] float radius;
     public List<GameObject> Get()
     {
         return DetectZoneList;
+    }
+    public void SetRadius()
+    {
+        transform.localScale = Vector3.one;
+        transform.localScale *= radius;
     }
 
     public bool isDetect()
