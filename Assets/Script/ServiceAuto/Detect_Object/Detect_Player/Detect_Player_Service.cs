@@ -22,7 +22,7 @@ public class Detect_Player_Service : MonoBehaviour, IServiceDetectPlayer
         if (collision.tag == "Player")
         {
             m_Player = collision.gameObject;
-            transform.localScale = new Vector3(2, 2, 2);
+            
         }
         
     }
@@ -31,7 +31,7 @@ public class Detect_Player_Service : MonoBehaviour, IServiceDetectPlayer
         if (collision.tag == "Player")
         {
             m_Player = null;
-            transform.localScale = new Vector3(1, 1, 1);
+            
         }
     }
 
