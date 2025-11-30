@@ -4,12 +4,17 @@ public class AttackPlayerService : MonoBehaviour, IAttackService
 {
     [SerializeField]float _atkspeed;
     [SerializeField] float _currenttime=0f;
+    [SerializeField] float _damage=10f;
+    [SerializeField] ISendDamage sendDamagePlayer;
+    [SerializeField] IServiceDetectPlayer detectPlayer;
+    [SerializeField] IAnimationControl animationControl;
     public float AttackSpeed { get => _atkspeed; set => _atkspeed=value; }
     public float CurrentTimer { get => _currenttime; set => _currenttime= value; }
-
+    
     public void Attack(GameObject target)
     {
-        Debug.Log("Attack Player");
+        if (!detectPlayer.isDetect()) return;
+        sendDamagePlayer.SendDamage(target, _damage);
         _currenttime = 0;
     }
 
@@ -28,6 +33,9 @@ public class AttackPlayerService : MonoBehaviour, IAttackService
     }
     void Start()
     {
+        sendDamagePlayer= GetComponent<ISendDamage>();
+        detectPlayer = GetComponent<IServiceDetectPlayer>();
         _currenttime = 0f;
     }
+
 }

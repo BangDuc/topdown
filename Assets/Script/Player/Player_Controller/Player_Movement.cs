@@ -43,8 +43,10 @@ public class Player_Movement : MonoBehaviour
         if (IsDashing) return;
         if (Input_Dir.x != 0)
         {
+            float yRotation = Input_Dir.x > 0 ? 0 : 180;
             
-            Player_Manager.Instance.Player.transform.localScale = new Vector3(Mathf.Sign(Input_Dir.x), 1, 1);
+
+            Player_Manager.Instance.Player.transform.rotation = Quaternion.Euler(0, yRotation, 0);
         }
         Vector2 velocity = Vector2.ClampMagnitude(dir, 1f) * speed;
         Rb.linearVelocity = velocity;

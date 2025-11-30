@@ -4,7 +4,7 @@ namespace Bang.Lib.ObjectPooling
     public class ReturnToMyPool : MonoBehaviour
     {
         public MyPool pool;
-        public void OnDisable()
+        public virtual void OnDisable()
         {
             pool.AddToPool(gameObject);
         }

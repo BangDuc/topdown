@@ -6,7 +6,6 @@ public class AttackPlayerBehaviour : MonoBehaviour , IBehaviourNode
     IServiceDetectPlayer serviceDetectPlayer;
     IAttackService attackService;
 
-
     Monster_Attack_SequenceNode attack_sequenceNode;
 
     [SerializeField]string _id;

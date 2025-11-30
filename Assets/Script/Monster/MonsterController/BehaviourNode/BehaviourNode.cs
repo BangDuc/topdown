@@ -6,7 +6,7 @@ public class BehaviourNode : MonoBehaviour
 {
     SelectorNode SelectorNode;
 
-    Dictionary<string,IBehaviourNode> Nodes = new();
+    public Dictionary<string,IBehaviourNode> Nodes = new();
     private void Awake()
     {
         SelectorNode = new SelectorNode();

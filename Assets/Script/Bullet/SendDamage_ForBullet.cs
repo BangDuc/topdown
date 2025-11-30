@@ -3,10 +3,19 @@ using Bang.Lib.ObjectPooling;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseSendDamage : MonoBehaviour, ISendDamage
+public class SendDamage_ForBullet : MonoBehaviour, ISendDamage
 {
     [SerializeField] float Damage;
     [SerializeField]List<string> listTag = new List<string>();
+
+    public void SendDamage(GameObject target, float Damage)
+    {
+        if (target.TryGetComponent<ITargetable>(out var t))
+        {
+            t.GetDamage(Damage);
+        }
+    }
+
     public void setDamage(float damage)
     {
         this.Damage = damage;
@@ -14,11 +23,9 @@ public class BaseSendDamage : MonoBehaviour, ISendDamage
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(!listTag.Contains(collision.tag)) return;
-        if(collision.gameObject.TryGetComponent<ITargetable>(out var target))
-        {
-            target.GetDamage(Damage);
-            gameObject.SetActive(false);
-        }
+        SendDamage(collision.gameObject, Damage);
+        gameObject.SetActive(false);
+        
     }
 
 }

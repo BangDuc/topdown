@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 416040672772761370}
   - component: {fileID: 2593751857299443280}
   - component: {fileID: 4734281259317062378}
+  - component: {fileID: 4738455963106233567}
+  - component: {fileID: 319099748624697933}
   m_Layer: 0
   m_Name: AttackPlayer
   m_TagString: Untagged
@@ -70,7 +72,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.5
+  m_Radius: 1.05
 --- !u!114 &416040672772761370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _atkspeed: 1
   _currenttime: 0
+  _damage: 10
 --- !u!114 &4734281259317062378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +115,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 
+--- !u!114 &4738455963106233567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100275462480919794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d4019c226d50814f8c8632405f381b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 0
+--- !u!114 &319099748624697933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100275462480919794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84f0fec30bb8b944927fe80a20af0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8419155395087420273}
+  animWalk: 765711723
+  animAttack: 1080829965
 --- !u!1 &1733225134500659809
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6477882118123028119}
+  - component: {fileID: 7784572901125006054}
   m_Layer: 0
   m_Name: 'MonsterController '
   m_TagString: Untagged
@@ -144,6 +176,18 @@ Transform:
   - {fileID: 2161689708499504979}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7784572901125006054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733225134500659809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3ffe943f825a84c951c7b30979b497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4063299363455365432
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +202,7 @@ GameObject:
   - component: {fileID: 4034688779406461186}
   - component: {fileID: 4776644583418058838}
   - component: {fileID: 6684705455655080305}
+  - component: {fileID: 3641048648578845965}
   m_Layer: 0
   m_Name: ChasePlayer
   m_TagString: Untagged
@@ -269,6 +314,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 
+--- !u!114 &3641048648578845965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063299363455365432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84f0fec30bb8b944927fe80a20af0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8419155395087420273}
+  animWalk: 765711723
+  animAttack: 1080829965
 --- !u!1 &6186920494104297528
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +344,8 @@ GameObject:
   - component: {fileID: 3062177618933212702}
   - component: {fileID: 5571581513626330022}
   - component: {fileID: 8419155395087420273}
+  - component: {fileID: 155043934553464111}
+  - component: {fileID: 823142368695530978}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -300,7 +362,7 @@ Transform:
   m_GameObject: {fileID: 6186920494104297528}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.98, y: -5.33, z: 0}
+  m_LocalPosition: {x: 13.96, y: -9.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -459,8 +521,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 013761773bc35c7499a3250c14db337e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 1000
-  currentHP: 1000
+  maxHP: 100
+  currentHP: 100
+  isDead: 0
 --- !u!95 &8419155395087420273
 Animator:
   serializedVersion: 7
@@ -483,6 +546,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &155043934553464111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186920494104297528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6408567df84290d4f8711ccd87fa321f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 5571581513626330022}
+  GameObjectToDestroy: {fileID: 1733225134500659809}
+--- !u!114 &823142368695530978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186920494104297528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84f0fec30bb8b944927fe80a20af0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  animWalk: 765711723
+  animAttack: 1080829965
 --- !u!1 &7964059685095891368
 GameObject:
   m_ObjectHideFlags: 0

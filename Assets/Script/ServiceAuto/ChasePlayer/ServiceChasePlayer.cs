@@ -13,6 +13,7 @@ public class ServiceChasePlayer :MonoBehaviour, IChaseService
     {
         serviceStopMoving = GetComponent<IServiceStopMoving>();
         serviceStopMoving.SetRigidbody(rb);
+
     }
     public void Chase(GameObject Player)
     {
@@ -33,10 +34,4 @@ public class ServiceChasePlayer :MonoBehaviour, IChaseService
     {
         serviceStopMoving.StopMoving();
     }
-}
-
-public interface IChaseService
-{
-    void Chase(GameObject gameobject);
-    void Stop();
 }

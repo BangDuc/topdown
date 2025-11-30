@@ -7,17 +7,14 @@ public class Monster_Attack_SequenceNode : SequenceNode
     CheckCanAttack_Node checkCanAttack_Node;
     AttackPlayer_Node attackPlayer_Node;
 
-    IServiceDetectPlayer DetectPlayerNear;
-    IAttackService Attackservice;
-
+    
     public Monster_Attack_SequenceNode(IServiceDetectPlayer detectPlayerNear, IAttackService attackservice)
     {
-        DetectPlayerNear = detectPlayerNear;
-        Attackservice = attackservice;
+        
 
-        checkPlayerNear_Node = new CheckPlayerNear_Node(DetectPlayerNear);
-        checkCanAttack_Node = new CheckCanAttack_Node(Attackservice);
-        attackPlayer_Node = new AttackPlayer_Node(DetectPlayerNear, Attackservice);
+        checkPlayerNear_Node = new CheckPlayerNear_Node(detectPlayerNear);
+        checkCanAttack_Node = new CheckCanAttack_Node(attackservice);
+        attackPlayer_Node = new AttackPlayer_Node(detectPlayerNear, attackservice);
 
         AddChild(checkPlayerNear_Node);
 

@@ -1,17 +1,12 @@
 ﻿using Bang.Lib.Behaviour_Tree;
-using UnityEngine;
 
 
 public class Monster_Chase_SequenceNode : SequenceNode
 {
-    IServiceDetectPlayer serviceDetectPlayer;
-    IChaseService chasePlayer;
-
 
     public Monster_Chase_SequenceNode(IServiceDetectPlayer serviceDetectPlayer, IChaseService chasePlayer)
     {
-        this.serviceDetectPlayer = serviceDetectPlayer;
-        this.chasePlayer = chasePlayer;
+        
         AddChild(new CheckPlayerDetect_Node(serviceDetectPlayer, chasePlayer));
         AddChild(new ChasePlayer_Node(serviceDetectPlayer, chasePlayer));
     }
@@ -43,6 +38,7 @@ public class ChasePlayer_Node : BTNode
     {
         this.serviceDetectPlayer = serviceDetectPlayer;
         this.chasePlayer = chasePlayer;
+        
     }
 
     public override NodeState Tick()
